@@ -1,0 +1,29 @@
+{
+  "name": "hobart",
+  "version": "0.0.0",
+  "description": "discord bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "debug": "node --inspect dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UnambiguousUsername/hobart.git"
+  },
+  "author": "UnambiguousUsername",
+  "license": "UNLICENSE",
+  "bugs": {
+    "url": "https://github.com/UnambiguousUsername/hobart/issues"
+  },
+  "homepage": "https://github.com/UnambiguousUsername/hobart#readme",
+  "dependencies": {
+    "discord.js": "^14.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.15",
+    "@types/ws": "^8.5.3",
+    "typescript": "^4.8.2"
+  }
+}
