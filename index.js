@@ -21,7 +21,12 @@ for (const file of eventFiles) {
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const releasedPath = path.join(commandsPath, 'released');
+const inDevPath = path.join(commandsPath, 'indev');
+const examplesPath = path.join(commandsPath, 'examples');
+const commandFiles = [].concat(fs.readdirSync(releasedPath).filter(file => file.endsWith('.js'))
+	, fs.readdirSync(inDevPath).filter(file => file.endsWith('.js'))
+	, fs.readdirSync(examplesPath).filter(file => file.endsWith('.js')));
 
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
