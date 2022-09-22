@@ -24,12 +24,25 @@ const commandsPath = path.join(__dirname, 'commands');
 const releasedPath = path.join(commandsPath, 'released');
 const inDevPath = path.join(commandsPath, 'indev');
 const examplesPath = path.join(commandsPath, 'examples');
-const commandFiles = [].concat(fs.readdirSync(releasedPath).filter(file => file.endsWith('.js'))
-	, fs.readdirSync(inDevPath).filter(file => file.endsWith('.js'))
-	, fs.readdirSync(examplesPath).filter(file => file.endsWith('.js')));
 
-for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
+const releasedFiles = fs.readdirSync(releasedPath).filter(file => file.endsWith('.js'));
+const inDevFiles = fs.readdirSync(inDevPath).filter(file => file.endsWith('.js'))
+const examplesFiles = fs.readdirSync(examplesPath).filter(file => file.endsWith('.js'));
+
+for (const file of releasedFiles) {
+	const filePath = path.join(releasedPath, file);
+	const command = require(filePath);
+	client.commands.set(command.data.name, command);
+}
+
+for (const file of inDevFiles) {
+	const filePath = path.join(inDevPath, file);
+	const command = require(filePath);
+	client.commands.set(command.data.name, command);
+}
+
+for (const file of examplesFiles) {
+	const filePath = path.join(examplesPath, file);
 	const command = require(filePath);
 	client.commands.set(command.data.name, command);
 }
