@@ -1,13 +1,13 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ApplicationCommandOptionWithChoicesAndAutocompleteMixin } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('options')
 		.setDescription('Test out options.')
-		.addStringOption(option => option.setName('string').setDescription('String').setRequired(true))
+		.addStringOption(option => option.setName('input').setDescription('String').setRequired(true))
 		.addBooleanOption(option => option.setName('bool').setDescription('Boolean'))
-		.addUserOption(option => option.setName('user').setDescription('User'))
-		.addChannelOption(option => option.setName('channel').setDescription('Channel'))
+		.addUserOption(option => option.setName('target').setDescription('User'))
+		.addChannelOption(option => option.setName('destination').setDescription('Channel'))
 		.addRoleOption(option => option.setName('role').setDescription('Role'))
 		.addIntegerOption(option => option.setName('int').setDescription('Integer'))
 		.addNumberOption(option => option.setName('num').setDescription('Number'))
@@ -17,7 +17,7 @@ module.exports = {
 		const string = interaction.options.getString('input');
 		const boolean = interaction.options.getBoolean('bool');
 		const user = interaction.options.getUser('target');
-		const member = interaction.options.getMember('target');
+		const member = interaction.options.getUser('target');
 		const channel = interaction.options.getChannel('destination');
 		const role = interaction.options.getRole('role');
 		const integer = interaction.options.getInteger('int');

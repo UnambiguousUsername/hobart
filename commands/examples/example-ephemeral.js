@@ -5,6 +5,6 @@ module.exports = {
 		.setName('ephemeral')
 		.setDescription('Test out ephemeral messaging.'),
 	async execute(interaction) {
-		await interaction.reply({ content: 'Boo!', ephemeral: true });
+		await interaction.reply({ content: 'Boo!', ephemeral: true }).then(() => console.log('ephemeral')).catch(console.error);
 	},
 };

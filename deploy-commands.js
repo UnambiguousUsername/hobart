@@ -43,10 +43,6 @@ rest.put(Routes.applicationCommands(clientId), { body: releasedCommands })
 	.then(() => console.log('Successfully registered released application commands.'))
 	.catch(console.error);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: inDevCommands })
-	.then(() => console.log('Successfully registered in development application commands.'))
-	.catch(console.error);
-
-rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: examplesCommands })
-	.then(() => console.log('Successfully registered example application commands.'))
+rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: [...inDevCommands, ...examplesCommands] })
+	.then(() => console.log('Successfully registered in development and example application commands.'))
 	.catch(console.error);
